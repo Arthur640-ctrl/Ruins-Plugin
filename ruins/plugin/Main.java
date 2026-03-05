@@ -1,20 +1,26 @@
 package fr.ruins.plugin;
 
-import fr.ruins.plugin.auth.AuthManager;
-import fr.ruins.plugin.auth.SessionManager;
-import fr.ruins.plugin.ban.BanManager;
+import fr.ruins.plugin.auth.commands.LoginCommand;
+import fr.ruins.plugin.auth.commands.RegisterCommand;
+import fr.ruins.plugin.auth.managers.AuthManager;
+import fr.ruins.plugin.auth.managers.SessionManager;
+import fr.ruins.plugin.ban.commands.BanCommand;
+import fr.ruins.plugin.ban.commands.UnbanCommand;
+import fr.ruins.plugin.ban.managers.BanManager;
 import fr.ruins.plugin.commands.*;
-import fr.ruins.plugin.database.MongoManager;
-import fr.ruins.plugin.listeners.AuthListener;
-import fr.ruins.plugin.listeners.BanListener;
-import fr.ruins.plugin.listeners.PlayerKillListener;
-import fr.ruins.plugin.listeners.ShopListener;
-import fr.ruins.plugin.player.PlayerData;
-import fr.ruins.plugin.rank.RankManager;
-import fr.ruins.plugin.score.ScoreManager;
-import fr.ruins.plugin.scoreboard.ScoreboardManager;
-import fr.ruins.plugin.shop.ShopGUI;
-import fr.ruins.plugin.shop.ShopManager;
+import fr.ruins.plugin.database.managers.MongoManager;
+import fr.ruins.plugin.auth.listeners.AuthListener;
+import fr.ruins.plugin.ban.listeners.BanListener;
+import fr.ruins.plugin.rank.listeners.PlayerKillListener;
+import fr.ruins.plugin.shop.listeners.ShopListener;
+import fr.ruins.plugin.player.utils.PlayerData;
+import fr.ruins.plugin.rank.managers.RankManager;
+import fr.ruins.plugin.score.managers.ScoreManager;
+import fr.ruins.plugin.scoreboard.managers.ScoreboardManager;
+import fr.ruins.plugin.shop.gui.ShopGUI;
+import fr.ruins.plugin.shop.managers.ShopManager;
+import fr.ruins.plugin.shop.commands.SellCommand;
+import fr.ruins.plugin.shop.commands.ShopCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
