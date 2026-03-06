@@ -11,7 +11,11 @@ import fr.ruins.plugin.commands.*;
 import fr.ruins.plugin.database.managers.MongoManager;
 import fr.ruins.plugin.auth.listeners.AuthListener;
 import fr.ruins.plugin.ban.listeners.BanListener;
+import fr.ruins.plugin.money.commands.MoneyCommand;
 import fr.ruins.plugin.rank.listeners.PlayerKillListener;
+import fr.ruins.plugin.score.commands.ScoreCommand;
+import fr.ruins.plugin.shop.commands.CloseCommand;
+import fr.ruins.plugin.shop.commands.OpenCommand;
 import fr.ruins.plugin.shop.listeners.ShopListener;
 import fr.ruins.plugin.player.utils.PlayerData;
 import fr.ruins.plugin.rank.managers.RankManager;
@@ -88,6 +92,18 @@ public class Main extends JavaPlugin {
 
         getCommand("sell").setExecutor(
                 new SellCommand(shopManager, shopGUI));
+
+        getCommand("score").setExecutor(
+                new ScoreCommand(playerData));
+
+        getCommand("money").setExecutor(
+                new MoneyCommand(playerData));
+
+        getCommand("openshop").setExecutor(
+                new OpenCommand(shopManager));
+
+        getCommand("closeshop").setExecutor(
+                new CloseCommand(shopManager));
 
         // Listeners
         getServer().getPluginManager().registerEvents(

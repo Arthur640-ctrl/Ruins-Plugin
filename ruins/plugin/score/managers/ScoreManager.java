@@ -47,20 +47,28 @@ public class ScoreManager {
     }
 
     public int calculateScoreGain(Rank killer, Rank victim) {
-        int diff = victim.getMinScore() - killer.getMinScore(); // différence de score
-        int baseGain = 50; // score de base pour tuer un égal
-        int scoreGain = baseGain + diff / 10; // ajuster selon différence de rang
-        return Math.max(10, scoreGain); // minimum 10 points
+
+        int diff = victim.getMinScore() - killer.getMinScore();
+
+        int base = 30;
+
+        int bonus = diff / 20;
+
+        int gain = base + bonus;
+
+        return Math.max(5, gain);
     }
 
     public int calculateScoreLoss(Rank victim) {
-        // La perte de score doit être petite, proportionnelle au rang
         return Math.max(5, victim.getMinScore() / 20);
     }
 
-    public int calculatePrime(Rank rank, int currentScore) {
+    public int calculatePrime(Rank rank, int score) {
+
         int base = rank.getBasePrime();
-        int bonus = (int) (Math.sqrt(currentScore));
+
+        int bonus = (int) (Math.sqrt(score) * 2);
+
         return base + bonus;
     }
 

@@ -46,6 +46,7 @@ public class PlayerKillListener implements Listener {
             playerData.addPlayerKills(killer.getUniqueId(), 1);
 
             playerData.addPlayerDeaths(victim.getUniqueId(), 1);
+            playerData.removePlayerMoney(victim.getUniqueId(), prime);
 
             int loss = scoreManager.calculateScoreLoss(victimRank);
             playerData.removePlayerScore(victim.getUniqueId(), loss);

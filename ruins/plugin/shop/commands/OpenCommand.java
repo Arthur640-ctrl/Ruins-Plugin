@@ -7,14 +7,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ShopCommand implements CommandExecutor {
+public class OpenCommand implements CommandExecutor {
 
     private final ShopManager manager;
-    private final ShopGUI gui;
 
-    public ShopCommand(ShopManager manager) {
+    public OpenCommand(ShopManager manager) {
         this.manager = manager;
-        this.gui = new ShopGUI(manager);
     }
 
     @Override
@@ -23,18 +21,17 @@ public class ShopCommand implements CommandExecutor {
             sender.sendMessage("This command is only for players.");
             return true;
         }
-        Player p = (Player) sender;
-        int page = 1;
-        if (args.length >= 1) {
-            try { page = Integer.parseInt(args[0]); } catch (Exception ignored) { page = 1; }
-        }
 
-        if (manager.shopIsOpen() == false) {
-            sender.sendMessage("§cImpossible d'ouvrir le shop pour l'instant (fermé par le staff).");
+        if (args.length != 0) {
+            sender.sendMessage("§cUsage: /openshop");
             return true;
         }
 
-        gui.openShop(p, page);
+        manager.setShopOpen(true);
+
+        sender.sendMessage("Shop activé pour les jouers");
+
         return true;
     }
+
 }

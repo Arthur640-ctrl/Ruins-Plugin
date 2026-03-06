@@ -18,6 +18,7 @@ public class ShopManager {
 
     private final MongoCollection<Document> shop_collection;
     private final PlayerData playerData;
+    public Boolean shop_open = true;
 
     public ShopManager(MongoCollection<Document> shopCollection, PlayerData playerData) {
         this.shop_collection = shopCollection;
@@ -90,5 +91,14 @@ public class ShopManager {
         // Supprimer l'annonce
         shop_collection.deleteOne(Filters.eq("_id", id));
         return true;
+    }
+
+    // Return true ou false en fonction si le shop est ouvert ou pas
+    public boolean shopIsOpen() {
+        return shop_open;
+    }
+
+    public void setShopOpen(Boolean open) {
+        shop_open = open;
     }
 }

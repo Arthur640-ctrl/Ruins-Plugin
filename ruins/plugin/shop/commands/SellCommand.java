@@ -14,9 +14,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * /sell -> ouvre l'inventaire de vente où le joueur place l'item à vendre et clique confirmer.
- */
+
 public class SellCommand implements CommandExecutor {
 
     private final ShopManager manager;
@@ -33,6 +31,12 @@ public class SellCommand implements CommandExecutor {
             sender.sendMessage("This command is only for players.");
             return true;
         }
+
+        if (manager.shopIsOpen() == false) {
+            sender.sendMessage("§cImpossible d'ouvrir le shop pour l'instant (fermé par le staff).");
+            return true;
+        }
+
         Player p = (Player) sender;
         Inventory inv = Bukkit.createInventory(null, 27, "Shop - Vendre");
 
