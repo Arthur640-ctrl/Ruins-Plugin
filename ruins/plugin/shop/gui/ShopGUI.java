@@ -40,7 +40,7 @@ public class ShopGUI {
                 meta.setDisplayName(meta.hasDisplayName() ? meta.getDisplayName() : it.getType().toString());
                 List<String> lore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
                 lore.add("");
-                lore.add("§aPrix: §e" + s.getPrice());
+                lore.add("§aPrix: §e" + s.getPrice() + "$");
                 lore.add("§7Vendeur: §f" + s.getSellerName());
                 lore.add("§7ID: §f" + s.getId());
                 lore.add("");

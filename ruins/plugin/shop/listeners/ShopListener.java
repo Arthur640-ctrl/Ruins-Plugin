@@ -128,7 +128,7 @@ public class ShopListener implements Listener {
         Bukkit.getScheduler().runTask(Main.getInstance(), () -> {
             manager.createListing(u, item, price, item.getAmount());
             Player p = Bukkit.getPlayer(u);
-            if (p != null && p.isOnline()) p.sendMessage("§aAnnonce créée au prix de §e" + price + "§a.");
+            if (p != null && p.isOnline()) p.sendMessage("§aAnnonce créée au prix de §e" + price + "$§a.");
         });
     }
 }

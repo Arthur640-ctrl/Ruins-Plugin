@@ -96,7 +96,6 @@ public class AuthListener implements Listener {
 
         player.setWalkSpeed(0f);
         player.setFlySpeed(0f);
-        player.setAllowFlight(false);
 
         scoreboardManager.removePlayer(player);
     }
@@ -108,7 +107,6 @@ public class AuthListener implements Listener {
 
         player.setWalkSpeed(0.2f);
         player.setFlySpeed(0.1f);
-        player.setAllowFlight(false);
 
         scoreboardManager.createScoreboard(player, "NONE", 0, 0, 0, 0);
     }

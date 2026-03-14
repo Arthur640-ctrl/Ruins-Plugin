@@ -48,7 +48,7 @@ public class ScoreboardManager {
         obj.getScore(ChatColor.YELLOW + "> Rank: " + ChatColor.WHITE + rank).setScore(12);
 
         // Argent
-        obj.getScore(ChatColor.LIGHT_PURPLE + "> Argent: " + ChatColor.WHITE + money).setScore(11);
+        obj.getScore(ChatColor.LIGHT_PURPLE + "> Argent: " + ChatColor.WHITE + money + "$").setScore(11);
 
         // Score
         obj.getScore(ChatColor.AQUA + "> Score: " + ChatColor.WHITE + scoreValue).setScore(10);

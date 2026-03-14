@@ -27,6 +27,11 @@ import fr.ruins.plugin.shop.commands.SellCommand;
 import fr.ruins.plugin.shop.commands.ShopCommand;
 import fr.ruins.plugin.streak.commands.CollectCommand;
 import fr.ruins.plugin.streak.managers.StreakManager;
+import fr.ruins.plugin.tpa.commands.TpAcceptCommand;
+import fr.ruins.plugin.tpa.commands.TpDenyCommand;
+import fr.ruins.plugin.tpa.commands.TpaCommand;
+import fr.ruins.plugin.tpa.commands.TpahereCommand;
+import fr.ruins.plugin.tpa.managers.TpaManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -42,6 +47,7 @@ public class Main extends JavaPlugin {
     private ShopManager shopManager;
     private ShopGUI shopGUI;
     private StreakManager streakManager;
+    private TpaManager tpaManager;
 
     private static Main instance;
 
@@ -75,6 +81,8 @@ public class Main extends JavaPlugin {
         shopGUI = new ShopGUI(shopManager);
 
         streakManager = new StreakManager(playerData);
+
+        tpaManager = new TpaManager();
 
         // Commandes
         getCommand("ruins").setExecutor(
@@ -112,6 +120,18 @@ public class Main extends JavaPlugin {
 
         getCommand("collect").setExecutor(
                 new CollectCommand(streakManager));
+
+        getCommand("tpa").setExecutor(
+                new TpaCommand(tpaManager));
+
+        getCommand("tpaccept").setExecutor(
+                new TpAcceptCommand(tpaManager));
+
+        getCommand("tpdeny").setExecutor(
+                new TpDenyCommand(tpaManager));
+
+        getCommand("tpahere").setExecutor(
+                new TpahereCommand(tpaManager));
 
         // Listeners
         getServer().getPluginManager().registerEvents(

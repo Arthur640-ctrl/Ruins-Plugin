@@ -67,7 +67,7 @@ public class StreakManager {
 
         playerData.addPlayerMoney(player.getUniqueId(), reward);
 
-        player.sendMessage("§6+" + reward + " coins !");
+        player.sendMessage("§6+" + reward + "$ !");
         player.sendMessage("§eStreak: §a" + streak);
     }
 }
