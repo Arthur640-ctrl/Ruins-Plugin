@@ -40,7 +40,7 @@ public class LoginCommand implements CommandExecutor {
 
             player.setWalkSpeed(0.2f);
             player.setFlySpeed(0.1f);
-            player.setAllowFlight(false);
+            player.setAllowFlight(true);
 
             scoreboardManager.createScoreboard(player, "NONE", 0, 0, 0, 0);
 

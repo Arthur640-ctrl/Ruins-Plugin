@@ -179,4 +179,40 @@ public class PlayerData {
                 new Document("$set", new Document("kills", value)));
     }
 
+
+    // STREAK
+    public int getStreak(UUID uuid) {
+        Document found = player_collection.find(new Document("uuid", uuid.toString())).first();
+
+        if (found != null && found.containsKey("streak")) {
+            return found.getInteger("streak");
+        }
+
+        return 0;
+    }
+
+    public void setStreak(UUID uuid, int value) {
+        player_collection.updateOne(
+                new Document("uuid", uuid.toString()),
+                new Document("$set", new Document("streak", value))
+        );
+    }
+
+    // LAST CLAIM
+    public long getLastClaim(UUID uuid) {
+        Document found = player_collection.find(new Document("uuid", uuid.toString())).first();
+
+        if (found != null && found.containsKey("lastClaim")) {
+            return ((Number) found.get("lastClaim")).longValue();
+        }
+
+        return 0;
+    }
+
+    public void setLastClaim(UUID uuid, long time) {
+        player_collection.updateOne(
+                new Document("uuid", uuid.toString()),
+                new Document("$set", new Document("lastClaim", time))
+        );
+    }
 }

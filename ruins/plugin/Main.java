@@ -25,6 +25,8 @@ import fr.ruins.plugin.shop.gui.ShopGUI;
 import fr.ruins.plugin.shop.managers.ShopManager;
 import fr.ruins.plugin.shop.commands.SellCommand;
 import fr.ruins.plugin.shop.commands.ShopCommand;
+import fr.ruins.plugin.streak.commands.CollectCommand;
+import fr.ruins.plugin.streak.managers.StreakManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -39,6 +41,7 @@ public class Main extends JavaPlugin {
     private BanManager banManager;
     private ShopManager shopManager;
     private ShopGUI shopGUI;
+    private StreakManager streakManager;
 
     private static Main instance;
 
@@ -70,6 +73,8 @@ public class Main extends JavaPlugin {
         shopManager = new ShopManager(mongoManager.getDatabase().getCollection("shop"), playerData);
 
         shopGUI = new ShopGUI(shopManager);
+
+        streakManager = new StreakManager(playerData);
 
         // Commandes
         getCommand("ruins").setExecutor(
@@ -104,6 +109,9 @@ public class Main extends JavaPlugin {
 
         getCommand("closeshop").setExecutor(
                 new CloseCommand(shopManager));
+
+        getCommand("collect").setExecutor(
+                new CollectCommand(streakManager));
 
         // Listeners
         getServer().getPluginManager().registerEvents(

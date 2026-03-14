@@ -25,15 +25,25 @@ public class AuthManager {
         String hash = PasswordHasher.hash(password);
 
         Document doc = new Document()
+                // Main
                 .append("uuid", uuid.toString())
                 .append("name", name)
+
+                // Auth
                 .append("password", hash)
+                .append("login", true)
+                .append("createdAt", System.currentTimeMillis())
+
+                // Infos
                 .append("score", 0)
                 .append("money", 0)
                 .append("deaths", 0)
                 .append("kills", 0)
-                .append("login", true)
-                .append("createdAt", System.currentTimeMillis());
+
+                // Streak
+                .append("lastClaim", 0)
+                .append("streak", 0);
+        ;
 
         player_collection.insertOne(doc);
     }
